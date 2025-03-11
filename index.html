@@ -1,11 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ph -- tube</title>
+    <!-- DaisyUI and Tailwind CSS CDN Link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Font and others optimize -->
+    <style type="text/tailwindcss">
+        @theme {
+            --color-clifford: #da373d;
+            --font-inter: "Inter", 'sans-serif'
+          }
+        </style>
 </head>
-<body>
-    
+
+<body class="font-inter w-11/12 mx-auto">
+    <header>
+        <div class="navbar bg-base-100 shadow-sm">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <figure>
+                        <img src="./assets/Logo.png" alt="">
+                    </figure>
+                </div>
+            </div>
+            <div class="navbar-center">
+                <a class="btn btn-ghost text-xl">Sort by view</a>
+            </div>
+            <div class="navbar-end">
+                <button class="btn bg-red-600 text-white">
+                    Blog
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Button Section -->
+        <section id="category-container" class="flex gap-6 justify-center mt-10">
+            <button class="btn bg-red-600 text-white px-5 py-2">All</button>
+            <!-- <button class="btn px-5 py-2">Music</button>
+            <button class="btn px-5 py-2">Comedy</button> -->
+            <!-- <button class="btn px-5 py-2">Drawing</button> -->
+        </section>
+    </main>
+
+
+    <script src="./script/index.js"></script>
 </body>
+
 </html>
