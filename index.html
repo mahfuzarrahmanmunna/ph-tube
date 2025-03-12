@@ -8,6 +8,8 @@
     <!-- DaisyUI and Tailwind CSS CDN Link -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome CDN Link -->
+    <script src="https://kit.fontawesome.com/5c54d19429.js" crossorigin="anonymous"></script>
     <!-- Font Family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,10 +48,20 @@
     <main>
         <!-- Button Section -->
         <section id="category-container" class="flex gap-6 justify-center mt-10">
-            <button class="btn bg-red-600 text-white px-5 py-2">All</button>
+            <button class="btn bg-red-600 text-white px-5 py-2" id="allButton">All</button>
             <!-- <button class="btn px-5 py-2">Music</button>
             <button class="btn px-5 py-2">Comedy</button> -->
             <!-- <button class="btn px-5 py-2">Drawing</button> -->
+        </section>
+
+        <!-- Video Container  -->
+        <section id="video-container" class="grid grid-cols-2 lg:grid-cols-4 gap-6 justify-between mt-10">
+            <div class="col-span-full flex justify-center items-center h-full">
+                <div class="py-20 px-10 text-center">
+                    <img class="mx-auto" src="./assets/Icon.png" alt="">
+                    <h2 class="text-2xl font-bold text-gray-600">Oops!! Sorry, There is no <br>content here</h2>
+                </div>
+            </div>
         </section>
     </main>
 
