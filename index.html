@@ -22,6 +22,11 @@
             --color-clifford: #da373d;
             --font-inter: "Inter", 'sans-serif'
           }
+
+        .active{
+            background: red;
+            color: white;
+        }
         </style>
 </head>
 
@@ -48,14 +53,14 @@
     <main>
         <!-- Button Section -->
         <section id="category-container" class="flex gap-6 justify-center mt-10">
-            <button class="btn bg-red-600 text-white px-5 py-2" id="allButton">All</button>
+            <button class="btn px-5 py-2" id="allButton">All</button>
             <!-- <button class="btn px-5 py-2">Music</button>
             <button class="btn px-5 py-2">Comedy</button> -->
             <!-- <button class="btn px-5 py-2">Drawing</button> -->
         </section>
 
         <!-- Video Container  -->
-        <section id="video-container" class="grid grid-cols-2 lg:grid-cols-4 gap-6 justify-between mt-10">
+        <section id="video-container" class="grid grid-cols-2 lg:grid-cols-4 gap-6 justify-between mt-10 mb-10">
             <div class="col-span-full flex justify-center items-center h-full">
                 <div class="py-20 px-10 text-center">
                     <img class="mx-auto" src="./assets/Icon.png" alt="">

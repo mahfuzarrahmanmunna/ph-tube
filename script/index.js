@@ -1,3 +1,10 @@
+function removeActiveClass() {
+    const activeButtons = document.getElementsByClassName('active');
+    for (let btn of activeButtons) {
+        btn.classList.remove('active')
+    }
+}
+
 function loadCategories() {
     // Fetch the data
     fetch('https://openapi.programming-hero.com/api/phero-tube/categories')
@@ -8,16 +15,35 @@ function loadCategories() {
 function loadVideos() {
     fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
         .then(res => res.json())
-        .then(data => displayVideos(data.videos))
+        .then(data => {
+            document.getElementById('allButton').classList.add('active');
+            displayVideos(data.videos)
+        })
 }
 
 const loadCategoryVideos = (id) => {
     const urls = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`
     console.log(urls);
     fetch(urls).then(res => res.json())
-        .then(data => displayVideos(data.category))
+        .then(data => {
+            removeActiveClass()
+
+            const clickButton = document.getElementById(`btn-${id}`);
+            clickButton.classList.add('active')
+            // console.log(clickButton)
+            displayVideos(data.category)
+        })
 }
 
+function loadVideoDetails(videoId) {
+    console.log(videoId);
+    const urls = `https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`
+    fetch(urls).then(res => res.json())
+        .then(data => videoDetails(data.video))
+}
+const videoDetails = (video) => {
+    console.log(video)
+}
 function displayCategories(categories) {
     // get the container
     const categorieContainer = document.getElementById('category-container');
@@ -27,7 +53,7 @@ function displayCategories(categories) {
         // console.log(cat)
         const createDiv = document.createElement('div');
         createDiv.innerHTML = `
-        <button onclick='loadCategoryVideos(${cat.category_id})' class="btn hover:bg-red-500 hover:text-white px-5 py-2">${cat.category}</button>
+        <button id='btn-${cat.category_id}' onclick='loadCategoryVideos(${cat.category_id})' class="btn hover:bg-red-500 hover:text-white px-5 py-2">${cat.category}</button>
         `
         categorieContainer.append(createDiv)
     }
@@ -73,6 +99,7 @@ function displayVideos(videos) {
                         </div>
                     </div>
                 </div>
+                <button onclick='loadVideoDetails("${video.video_id}")' class="btn btn-block">Show Details</button>
             </div>
         `
         // console.log(element)
