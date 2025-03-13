@@ -12,8 +12,8 @@ function loadCategories() {
         .then(data => displayCategories(data.categories))
 }
 
-function loadVideos() {
-    fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
+function loadVideos(searchText = '') {
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchText}`)
         .then(res => res.json())
         .then(data => {
             document.getElementById('allButton').classList.add('active');
@@ -42,7 +42,13 @@ function loadVideoDetails(videoId) {
         .then(data => videoDetails(data.video))
 }
 const videoDetails = (video) => {
-    console.log(video)
+    console.log(video);
+    document.getElementById('videoDetails').showModal();
+    const detailsContainer = document.getElementById('detailsContainer')
+    detailsContainer.innerHTML = `
+    <h2 class='text-xl font-bold text-center'>${video.title}</h2>
+    <p class='text-sm mt-2 text-gray-500'>${video.description}</p>
+    `
 }
 function displayCategories(categories) {
     // get the container
@@ -94,7 +100,11 @@ function displayVideos(videos) {
                         </div>
                         <div>
                             <h2 class="text-sm font-semibold">${video.title}</h2>
-                            <p class="text-gray-600 flex gap-1">${video.authors[0].profile_name} <img class="w-5 h-5" src="https://img.icons8.com/?size=60&id=lalayI2ulYNt&format=png" alt=""></p>
+                            <p class="text-gray-600 flex gap-1">${video.authors[0].profile_name} 
+                             ${video.authors[0].verified === true ? `
+                                <img class='w-5 h-5' title='varified' src='https://img.icons8.com/?size=48&id=SRJUuaAShjVD&format=png'>
+                                ` : ``}
+                            </p>
                             <p class="text-gray-500">${video.others.views} views</p>
                         </div>
                     </div>
@@ -108,6 +118,12 @@ function displayVideos(videos) {
 }
 
 document.getElementById('allButton').addEventListener('click', () => loadVideos())
+
+document.getElementById('searchInput').addEventListener('keyup', (e) => {
+    const input = e.target.value;
+    loadVideos(input)
+})
+
 
 // category
 // :
